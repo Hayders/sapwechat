@@ -1,0 +1,14 @@
+com\sapwechat\util\WechatUtil.class
+com\sapwechat\menu\ViewButton.class
+com\sapwechat\util\MessageUtil.class
+com\sapwechat\menu\ClickButton.class
+com\sapwechat\entity\AccessToken.class
+com\sapwechat\servlet\WechatServlet.class
+com\sapwechat\entity\BaseMessage.class
+com\sapwechat\entity\TextMessage.class
+com\sapwechat\entity\News.class
+com\sapwechat\entity\NewsMessage.class
+com\sapwechat\util\CheckAuthority.class
+com\sapwechat\menu\Button.class
+com\sapwechat\menu\Menu.class
+com\sapwechat\entity\UserBascInfo.class
