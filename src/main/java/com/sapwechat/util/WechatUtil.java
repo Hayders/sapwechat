@@ -144,37 +144,35 @@ public class WechatUtil {
 	 * @return
 	 */
 	public static Menu initMenu() {
-
 		Menu menu = new Menu();
-
-		ClickButton button11 = new ClickButton();
-		button11.setType("scancode_push");
-		button11.setName("SCAN");
-		button11.setKey("Button11");
-
-		ClickButton button12 = new ClickButton();
-		button12.setType("location_select");
-		button12.setName("LOCATED");
-		button12.setKey("Button12");
-
-		Button button1 = new Button();
-		button1.setName("ACTION");
-		button1.setSub_button(new Button[] { button11, button12 });
-
+		
+		ClickButton button1 = new ClickButton(); 
+		button1.setType("click");
+		button1.setName("CONTACT");
+		button1.setKey("Button1");
+		
 		ViewButton button2 = new ViewButton();
 		button2.setType("view");
 		button2.setName("RCS");
 		button2.setUrl("http://139.196.39.17/rcs/wechat/sap");
+		
+		ClickButton button31 = new ClickButton();
+		button31.setType("scancode_push");
+		button31.setName("SCAN");
+		button31.setKey("Button31");
 
-		ClickButton button3 = new ClickButton();
-		button3.setType("click");
-		button3.setName("CONTACT");
-		button3.setKey("Button3");
-
-		menu.setButton(new Button[] { button1, button2, button3 });
-
+		ClickButton button32 = new ClickButton();
+		button32.setType("location_select");
+		button32.setName("LOCATED");
+		button32.setKey("Button32");
+		
+		Button button = new Button();
+		button.setName("ACTION");
+		button.setSub_button(new Button[]{button31,button32});
+		
+		menu.setButton(new Button[]{button1, button2, button});
+		
 		return menu;
-
 	}
 
 	/**

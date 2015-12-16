@@ -5,7 +5,7 @@ public class News {
 	private String Title;
 	private String Description;
 	private String PicUrl;
-	private String url;
+	private String Url;
 	
 	public String getTitle() {
 		return Title;
@@ -26,10 +26,10 @@ public class News {
 		PicUrl = picUrl;
 	}
 	public String getUrl() {
-		return url;
+		return Url;
 	}
 	public void setUrl(String url) {
-		this.url = url;
+		Url = url;
 	}
 	
 }

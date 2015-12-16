@@ -35,11 +35,11 @@ public class WechatServlet extends HttpServlet {
 			out.print(echostr);
 		}
 
-//		// add menu
-//		AccessToken accessToken = WechatUtil.getAccessToken();
-//		String menuString = JSONObject.fromObject(WechatUtil.initMenu())
-//				.toString();
-//		WechatUtil.createMenu(accessToken.getAccess_token(), menuString);
+		// add menu
+		AccessToken accessToken = WechatUtil.getAccessToken();
+		String menuString = JSONObject.fromObject(WechatUtil.initMenu())
+				.toString();
+		WechatUtil.createMenu(accessToken.getAccess_token(), menuString);
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class WechatServlet extends HttpServlet {
 				String eventType = map.get("Event");
 				if (MessageUtil.MESSAGE_CLICK.equals(eventType)) {
 					String eventKey = map.get("EventKey");
-					if(("Button3").equals(eventKey)){
+					if(("Button1").equals(eventKey)){
 						message = MessageUtil.initNewsMessage(toUserName,
 								fromUserName);
 					}

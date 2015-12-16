@@ -104,12 +104,13 @@ public class MessageUtil {
 
 		XStream xStream = new XStream();
 		xStream.alias("xml", newsMessage.getClass());
-		xStream.alias("item", newsMessage.getClass());
+		xStream.alias("item", new News().getClass());
 		return xStream.toXML(newsMessage);
 	}
 
 	/**
 	 * init news message
+	 * 
 	 * @param toUserName
 	 * @param fromUserName
 	 * @return
@@ -119,14 +120,23 @@ public class MessageUtil {
 		List<News> newsList = new ArrayList<News>();
 		NewsMessage newsMessage = new NewsMessage();
 
-		News news = new News();
-		news.setTitle("SAP Recume Collection");
-		news.setDescription("Candidates are not willing to maintain their resumes at each "
+		News news1 = new News();
+		news1.setTitle("SAP Recume Collection");
+		news1.setDescription("Candidates are not willing to maintain their resumes at each "
 				+ "company’s recruiting site as  they already have resumes "
 				+ "maintained in popular recruitment site ( 51job, zhilian, etc)");
-		news.setPicUrl("http://139.196.39.17/sapwechat/target/sapwechat/static/img/hhdx.gif");
-		news.setUrl("http://139.196.39.17/rcs/wechat/sap");
-		newsList.add(news);
+		news1.setPicUrl("http://139.196.39.17/sapwechat/static/img/saprecruitment.jpg");
+		news1.setUrl("http://139.196.39.17/rcs/wechat/sap");
+		
+		News news2 = new News();
+		news2.setTitle("SAP Wechat Recruitment");
+		news2.setDescription("HR seeking a easier way to publish the recruiting information"
+				+ " and get talent’s resume at anywhere and anytime");
+		news2.setPicUrl("http://139.196.39.17/sapwechat/static/img/sapwechat.jpg");
+		news2.setUrl("http://139.196.39.17/rcs");
+		
+		newsList.add(news1);
+		newsList.add(news2);
 		
 		newsMessage.setFromUserName(toUserName);
 		newsMessage.setToUserName(fromUserName);
