@@ -19,11 +19,14 @@ public class Testsapwechat {
 		
 		createMenu(accessToken.getAccess_token());
 		
-//		String message = MessageUtil.initNewsMessage("aaa", "bbb");
-//		System.out.println(message);
-//		
-//		String menuString1 = JSONObject.fromObject(WechatUtil.initMenu()).toString();
-//		System.out.println(menuString1);
+//		String getCode_url = WechatUtil.GET_CODE_URL.replace("APPID", WechatUtil.APPID).replace("REDIRECT_URI", 
+//				WechatUtil.urlEnodeUTF8(WechatUtil.REDIRECT_URI)).replace("SCOPE", WechatUtil.SCOPE);
+//		System.out.println(getCode_url);
+		
+//		String sssString = WechatUtil.authorizedUserInfo();
+//		System.out.println(sssString);
+	
+		
 		
 	}
 	
@@ -34,6 +37,7 @@ public class Testsapwechat {
 			result = WechatUtil.createMenu(token, menuString);
 			if (result == 0) {
 				System.out.println("success");
+				System.out.println(menuString);
 			}
 		} catch (ParseException | IOException e) {
 			e.printStackTrace();

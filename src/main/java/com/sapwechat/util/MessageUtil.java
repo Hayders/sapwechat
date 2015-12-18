@@ -126,7 +126,7 @@ public class MessageUtil {
 				+ "company’s recruiting site as  they already have resumes "
 				+ "maintained in popular recruitment site ( 51job, zhilian, etc)");
 		news1.setPicUrl("http://139.196.39.17/sapwechat/static/img/saprecruitment.jpg");
-		news1.setUrl("http://139.196.39.17/rcs/wechat/sap");
+		news1.setUrl(WechatUtil.GET_CODE_URL.replace("APPID", WechatUtil.APPID).replace("REDIRECT_URI", WechatUtil.urlEnodeUTF8(WechatUtil.REDIRECT_URI)).replace("SCOPE", WechatUtil.SCOPE));
 		
 		News news2 = new News();
 		news2.setTitle("SAP Wechat Recruitment");

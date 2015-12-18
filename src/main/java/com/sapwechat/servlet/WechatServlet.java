@@ -34,12 +34,6 @@ public class WechatServlet extends HttpServlet {
 		if (CheckAuthority.checkSignature(signature, timestamp, nonce)) {
 			out.print(echostr);
 		}
-
-		// add menu
-		AccessToken accessToken = WechatUtil.getAccessToken();
-		String menuString = JSONObject.fromObject(WechatUtil.initMenu())
-				.toString();
-		WechatUtil.createMenu(accessToken.getAccess_token(), menuString);
 	}
 
 	@Override

@@ -1,6 +1,11 @@
 package com.sapwechat.util;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.xml.ws.spi.http.HttpContext;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -24,19 +29,29 @@ import com.sapwechat.menu.ViewButton;
 
 public class WechatUtil {
 
-	// public static final String APPID = "wxc701e9d4bd0e0b46"; //personal
 	// wechat public account , portion APIs
-	// public static final String APPSECRET =
-	// "13eb9b3debbe8cf806f4adbab7352679";
+//	public static final String APPID = "wxc701e9d4bd0e0b46"; // personal
+//	public static final String APPSECRET = "13eb9b3debbe8cf806f4adbab7352679";
 
 	// test wechat account , all APIs
-	public static final String APPID = "wxde611500e7346f8d";
-	public static final String APPSECRET = "d4624c36b6795d1d99dcf0547af5443d";
-
+	 public static final String APPID = "wxde611500e7346f8d";
+	 public static final String APPSECRET ="d4624c36b6795d1d99dcf0547af5443d";
+	
+	//public static final String SCOPE = "snsapi_base";
+	public static final String SCOPE = "snsapi_userinfo";
+	
+	//public static final String REDIRECT_URI = "http://139.196.39.17/rcs/wechat/sap"; 
+	public static final String REDIRECT_URI = "http://wx.sh-ruida.com/rcs/wechat/sap";
+	
+//	public static final String REDIRECT_URI = "http://www.qq.com/login.html";
+	
 	// public APIS
 	public static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 	public static final String USERINFO_URL = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
 	public static final String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
+
+	// Authorized user basic information page APIS
+	public static final String GET_CODE_URL = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
 
 	/**
 	 * get url
@@ -145,17 +160,17 @@ public class WechatUtil {
 	 */
 	public static Menu initMenu() {
 		Menu menu = new Menu();
-		
-		ClickButton button1 = new ClickButton(); 
+
+		ClickButton button1 = new ClickButton();
 		button1.setType("click");
 		button1.setName("CONTACT");
 		button1.setKey("Button1");
-		
+
 		ViewButton button2 = new ViewButton();
 		button2.setType("view");
 		button2.setName("RCS");
-		button2.setUrl("http://139.196.39.17/rcs/wechat/sap");
-		
+		button2.setUrl(GET_CODE_URL.replace("APPID", APPID).replace("REDIRECT_URI", urlEnodeUTF8(REDIRECT_URI)).replace("SCOPE", SCOPE));
+
 		ClickButton button31 = new ClickButton();
 		button31.setType("scancode_push");
 		button31.setName("SCAN");
@@ -165,13 +180,13 @@ public class WechatUtil {
 		button32.setType("location_select");
 		button32.setName("LOCATED");
 		button32.setKey("Button32");
-		
+
 		Button button = new Button();
 		button.setName("ACTION");
-		button.setSub_button(new Button[]{button31,button32});
-		
-		menu.setButton(new Button[]{button1, button2, button});
-		
+		button.setSub_button(new Button[] { button31, button32 });
+
+		menu.setButton(new Button[] { button1, button2, button });
+
 		return menu;
 	}
 
@@ -194,4 +209,38 @@ public class WechatUtil {
 		}
 		return result;
 	}
+	
+	
+	/*
+	public static String authorizedUserInfo() throws ClientProtocolException, IOException{
+		
+		String getCode_url = GET_CODE_URL.replace("APPID", APPID).replace("REDIRECT_URI", urlEnodeUTF8(REDIRECT_URI)).replace("SCOPE", SCOPE);
+		String code = null;
+		
+		HttpClient httpClient = HttpClientBuilder.create().build();
+		HttpGet httpGet = new HttpGet(getCode_url);
+		HttpResponse httpResponse = httpClient.execute(httpGet);
+	
+		httpGet.getURI().toURL();
+					
+		return getCode_url;
+		
+				
+		
+	}
+	*/
+	/**
+	 * url encode
+	 * @param str
+	 * @return
+	 */
+	 public static String urlEnodeUTF8(String str){
+	        String result = str;
+	        try {
+	            result = URLEncoder.encode(str,"UTF-8");
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return result;
+	    }
 }
