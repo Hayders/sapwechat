@@ -125,15 +125,15 @@ public class MessageUtil {
 		news1.setDescription("Candidates are not willing to maintain their resumes at each "
 				+ "company’s recruiting site as  they already have resumes "
 				+ "maintained in popular recruitment site ( 51job, zhilian, etc)");
-		news1.setPicUrl("http://139.196.39.17/sapwechat/static/img/saprecruitment.jpg");
+		news1.setPicUrl("http://wx.sh-ruida.coms/sapwechat/static/img/saprecruitment.jpg");
 		news1.setUrl(WechatUtil.GET_CODE_URL.replace("APPID", WechatUtil.APPID).replace("REDIRECT_URI", WechatUtil.urlEnodeUTF8(WechatUtil.REDIRECT_URI)).replace("SCOPE", WechatUtil.SCOPE));
 		
 		News news2 = new News();
 		news2.setTitle("SAP Wechat Recruitment");
 		news2.setDescription("HR seeking a easier way to publish the recruiting information"
 				+ " and get talent’s resume at anywhere and anytime");
-		news2.setPicUrl("http://139.196.39.17/sapwechat/static/img/sapwechat.jpg");
-		news2.setUrl("http://139.196.39.17/rcs");
+		news2.setPicUrl("http://wx.sh-ruida.com/sapwechat/static/img/sapwechat.jpg");
+		news2.setUrl("http://wx.sh-ruida.com/rcs");
 		
 		newsList.add(news1);
 		newsList.add(news2);

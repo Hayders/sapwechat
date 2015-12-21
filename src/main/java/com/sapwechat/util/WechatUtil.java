@@ -169,7 +169,7 @@ public class WechatUtil {
 		ViewButton button2 = new ViewButton();
 		button2.setType("view");
 		button2.setName("RCS");
-		button2.setUrl(GET_CODE_URL.replace("APPID", APPID).replace("REDIRECT_URI", urlEnodeUTF8(REDIRECT_URI)).replace("SCOPE", SCOPE));
+		button2.setUrl("http://wx.sh-ruida.com/rcs/wechat/sap");
 
 		ClickButton button31 = new ClickButton();
 		button31.setType("scancode_push");

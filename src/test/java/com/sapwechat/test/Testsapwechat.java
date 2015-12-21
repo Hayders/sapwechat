@@ -19,9 +19,9 @@ public class Testsapwechat {
 		
 		createMenu(accessToken.getAccess_token());
 		
-//		String getCode_url = WechatUtil.GET_CODE_URL.replace("APPID", WechatUtil.APPID).replace("REDIRECT_URI", 
-//				WechatUtil.urlEnodeUTF8(WechatUtil.REDIRECT_URI)).replace("SCOPE", WechatUtil.SCOPE);
-//		System.out.println(getCode_url);
+		String getCode_url = WechatUtil.GET_CODE_URL.replace("APPID", WechatUtil.APPID).replace("REDIRECT_URI", 
+				WechatUtil.urlEnodeUTF8(WechatUtil.REDIRECT_URI)).replace("SCOPE", WechatUtil.SCOPE);
+		System.out.println(getCode_url);
 		
 //		String sssString = WechatUtil.authorizedUserInfo();
 //		System.out.println(sssString);
