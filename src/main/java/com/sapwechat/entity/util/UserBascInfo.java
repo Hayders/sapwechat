@@ -1,4 +1,4 @@
-package com.sapwechat.entity;
+package com.sapwechat.entity.util;
 
 public class UserBascInfo {
 	

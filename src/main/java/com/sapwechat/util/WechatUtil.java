@@ -3,10 +3,6 @@ package com.sapwechat.util;
 import java.io.IOException;
 import java.net.URLEncoder;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.xml.ws.spi.http.HttpContext;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
@@ -20,8 +16,8 @@ import org.apache.http.util.EntityUtils;
 
 import net.sf.json.JSONObject;
 
-import com.sapwechat.entity.AccessToken;
-import com.sapwechat.entity.UserBascInfo;
+import com.sapwechat.entity.util.AccessToken;
+import com.sapwechat.entity.util.UserBascInfo;
 import com.sapwechat.menu.Button;
 import com.sapwechat.menu.ClickButton;
 import com.sapwechat.menu.Menu;
@@ -52,7 +48,8 @@ public class WechatUtil {
 
 	// Authorized user basic information page APIS
 	public static final String GET_CODE_URL = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
-
+	
+	public static final String POST_MODEL_MESSAGE = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
 	/**
 	 * get url
 	 * 
@@ -165,11 +162,23 @@ public class WechatUtil {
 		button1.setType("click");
 		button1.setName("CONTACT");
 		button1.setKey("Button1");
+		
+		
+		ViewButton button21 = new ViewButton();
+		button21.setType("view");
+		button21.setName("JOIN");
+		//button21.setKey("Button21");
+		button21.setUrl("http://www.baidu.com");
 
-		ViewButton button2 = new ViewButton();
-		button2.setType("view");
-		button2.setName("RCS");
-		button2.setUrl("http://wx.sh-ruida.com/rcs/wechat/sap");
+		ClickButton button22 = new ClickButton();
+		button22.setType("click");
+		button22.setName("MESSAGE");
+		button22.setKey("Button22");
+		
+		Button button2 = new Button();
+		button2.setName("INTERVIEW");
+		//button2.setUrl(WechatUtil.REDIRECT_URI + "?" +"wechatId=" + userBascInfo.getOpenid());
+		button2.setSub_button(new Button[]{button21,button22});
 
 		ClickButton button31 = new ClickButton();
 		button31.setType("scancode_push");
@@ -181,11 +190,11 @@ public class WechatUtil {
 		button32.setName("LOCATED");
 		button32.setKey("Button32");
 
-		Button button = new Button();
-		button.setName("ACTION");
-		button.setSub_button(new Button[] { button31, button32 });
+		Button button3 = new Button();
+		button3.setName("ACTION");
+		button3.setSub_button(new Button[] { button31, button32 });
 
-		menu.setButton(new Button[] { button1, button2, button });
+		menu.setButton(new Button[] { button1, button2, button3 });
 
 		return menu;
 	}
@@ -225,10 +234,9 @@ public class WechatUtil {
 					
 		return getCode_url;
 		
-				
-		
 	}
 	*/
+	
 	/**
 	 * url encode
 	 * @param str

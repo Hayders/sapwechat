@@ -9,12 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONObject;
-
 import org.dom4j.DocumentException;
 
-import com.sapwechat.entity.AccessToken;
-import com.sapwechat.entity.UserBascInfo;
+import com.sapwechat.entity.util.UserBascInfo;
 import com.sapwechat.util.CheckAuthority;
 import com.sapwechat.util.MessageUtil;
 import com.sapwechat.util.WechatUtil;
@@ -50,13 +47,13 @@ public class WechatServlet extends HttpServlet {
 			String fromUserName = map.get("FromUserName");
 			String msgType = map.get("MsgType");
 			String content = map.get("Content");
-
+			UserBascInfo userBascInfo = WechatUtil
+					.getUserBascInfo(fromUserName);
+			
 			String message = null;
 			if (MessageUtil.MESSAGE_TEXT.equals(msgType)) {
 				if ("?".equals(content) || "？".equals(content)) {
 
-					UserBascInfo userBascInfo = WechatUtil
-							.getUserBascInfo(fromUserName);
 					message = MessageUtil.initTextMessage(toUserName,
 							fromUserName, userBascInfo);
 				}
@@ -64,9 +61,9 @@ public class WechatServlet extends HttpServlet {
 				String eventType = map.get("Event");
 				if (MessageUtil.MESSAGE_CLICK.equals(eventType)) {
 					String eventKey = map.get("EventKey");
-					if(("Button1").equals(eventKey)){
+					if (("Button1").equals(eventKey)) {
 						message = MessageUtil.initNewsMessage(toUserName,
-								fromUserName);
+								fromUserName,userBascInfo);
 					}
 				}
 			}
