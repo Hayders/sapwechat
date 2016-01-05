@@ -1,4 +1,4 @@
-package com.sapwechat.menu;
+package com.sapwechat.entity.menu;
 
 public class Button {
 

@@ -18,237 +18,220 @@ import net.sf.json.JSONObject;
 
 import com.sapwechat.entity.util.AccessToken;
 import com.sapwechat.entity.util.UserBascInfo;
-import com.sapwechat.menu.Button;
-import com.sapwechat.menu.ClickButton;
-import com.sapwechat.menu.Menu;
-import com.sapwechat.menu.ViewButton;
+import com.sapwechat.entity.menu.Button;
+import com.sapwechat.entity.menu.ClickButton;
+import com.sapwechat.entity.menu.Menu;
+import com.sapwechat.entity.menu.ViewButton;
 
 public class WechatUtil {
 
-	// wechat public account , portion APIs
-//	public static final String APPID = "wxc701e9d4bd0e0b46"; // personal
-//	public static final String APPSECRET = "13eb9b3debbe8cf806f4adbab7352679";
+  // wechat public account , portion APIs
+  // public static final String APPID = "wxc701e9d4bd0e0b46"; // personal
+  // public static final String APPSECRET = "13eb9b3debbe8cf806f4adbab7352679";
 
-	// test wechat account , all APIs
-	 public static final String APPID = "wxde611500e7346f8d";
-	 public static final String APPSECRET ="d4624c36b6795d1d99dcf0547af5443d";
-	
-	//public static final String SCOPE = "snsapi_base";
-	public static final String SCOPE = "snsapi_userinfo";
-	
-	//public static final String REDIRECT_URI = "http://139.196.39.17/rcs/wechat/sap"; 
-	public static final String REDIRECT_URI = "http://wx.sh-ruida.com/rcs/wechat/sap";
-	
-//	public static final String REDIRECT_URI = "http://www.qq.com/login.html";
-	
-	// public APIS
-	public static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
-	public static final String USERINFO_URL = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
-	public static final String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
+  // test wechat account , all APIs
+  public static final String APPID = "wxde611500e7346f8d";
 
-	// Authorized user basic information page APIS
-	public static final String GET_CODE_URL = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
-	
-	public static final String POST_MODEL_MESSAGE = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
-	/**
-	 * get url
-	 * 
-	 * @param url
-	 * @return
-	 * @throws ClientProtocolException
-	 * @throws IOException
-	 */
-	public static JSONObject doGetStr(String url)
-			throws ClientProtocolException, IOException {
+  public static final String APPSECRET = "d4624c36b6795d1d99dcf0547af5443d";
 
-		HttpClient httpClient = HttpClientBuilder.create().build();
-		HttpGet httpGet = new HttpGet(url);
+  // public static final String SCOPE = "snsapi_base";
+  public static final String SCOPE = "snsapi_userinfo";
 
-		JSONObject jsonObject = null;
+  // public static final String REDIRECT_URI = "http://139.196.39.17/rcs/wechat/sap";
+  public static final String REDIRECT_URI = "http://wx.sh-ruida.com/rcs/wechat/sap";
 
-		HttpResponse httpResponse = httpClient.execute(httpGet);
+  // public static final String REDIRECT_URI = "http://www.qq.com/login.html";
 
-		HttpEntity httpEntity = httpResponse.getEntity();
-		if (httpEntity != null) {
-			String result = EntityUtils.toString(httpEntity);
-			jsonObject = JSONObject.fromObject(result);
-		}
+  // public APIS
+  public static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 
-		return jsonObject;
-	}
+  public static final String USERINFO_URL = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
 
-	/**
-	 * Post url
-	 * 
-	 * @param url
-	 * @param outStr
-	 * @return
-	 * @throws IOException
-	 */
-	public static JSONObject doPostStr(String url, String outStr)
-			throws IOException {
+  public static final String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
 
-		HttpClient httpClient = HttpClientBuilder.create().build();
-		HttpPost httpPost = new HttpPost(url);
+  // Authorized user basic information page APIS
+  public static final String GET_CODE_URL = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
 
-		JSONObject jsonObject = null;
+  public static final String POST_MODEL_MESSAGE = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
 
-		try {
-			httpPost.setEntity(new StringEntity(outStr, "UTF-8"));
-			HttpResponse httpResponse = httpClient.execute(httpPost);
-			String result = EntityUtils.toString(httpResponse.getEntity(),
-					"UTF-8");
-			jsonObject = JSONObject.fromObject(result);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return jsonObject;
-	}
+  /**
+   * get url
+   * 
+   * @param url
+   * @return
+   * @throws ClientProtocolException
+   * @throws IOException
+   */
+  public static JSONObject doGetStr(String url) throws ClientProtocolException,
+      IOException {
 
-	/**
-	 * get access_token
-	 * 
-	 * @return
-	 * @throws ClientProtocolException
-	 * @throws IOException
-	 */
-	public static AccessToken getAccessToken() throws ClientProtocolException,
-			IOException {
+    HttpClient httpClient = HttpClientBuilder.create().build();
+    HttpGet httpGet = new HttpGet(url);
 
-		AccessToken token = new AccessToken();
-		String url = ACCESS_TOKEN_URL.replace("APPID", APPID).replace(
-				"APPSECRET", APPSECRET);
+    JSONObject jsonObject = null;
 
-		JSONObject jsonObject = doGetStr(url);
-		if (jsonObject != null) {
-			token.setAccess_token(jsonObject.getString("access_token"));
-			token.setExpires_in(jsonObject.getInt("expires_in"));
-		}
-		return token;
-	}
+    HttpResponse httpResponse = httpClient.execute(httpGet);
 
-	/**
-	 * get userinfo
-	 * 
-	 * @param fromUserName
-	 * @return
-	 */
-	public static UserBascInfo getUserBascInfo(String fromUserName) {
-		UserBascInfo userBascInfo = new UserBascInfo();
-		try {
-			String userInfo_url = USERINFO_URL.replace("ACCESS_TOKEN",
-					getAccessToken().getAccess_token()).replace("OPENID",
-					fromUserName);
-			JSONObject jsonObject = doGetStr(userInfo_url);
-			if (jsonObject != null) {
-				userBascInfo.setOpenid(jsonObject.getString("openid"));
-				userBascInfo.setSubscribe(jsonObject.getString("subscribe"));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return userBascInfo;
-	}
+    HttpEntity httpEntity = httpResponse.getEntity();
+    if (httpEntity != null) {
+      String result = EntityUtils.toString(httpEntity);
+      jsonObject = JSONObject.fromObject(result);
+    }
 
-	/**
-	 * init the menu
-	 * 
-	 * @return
-	 */
-	public static Menu initMenu() {
-		Menu menu = new Menu();
+    return jsonObject;
+  }
 
-		ClickButton button1 = new ClickButton();
-		button1.setType("click");
-		button1.setName("CONTACT");
-		button1.setKey("Button1");
-		
-		
-		ViewButton button21 = new ViewButton();
-		button21.setType("view");
-		button21.setName("JOIN");
-		//button21.setKey("Button21");
-		button21.setUrl("http://www.baidu.com");
+  /**
+   * Post url
+   * 
+   * @param url
+   * @param outStr
+   * @return
+   * @throws IOException
+   */
+  public static JSONObject doPostStr(String url, String outStr)
+      throws IOException {
 
-		ClickButton button22 = new ClickButton();
-		button22.setType("click");
-		button22.setName("MESSAGE");
-		button22.setKey("Button22");
-		
-		Button button2 = new Button();
-		button2.setName("INTERVIEW");
-		//button2.setUrl(WechatUtil.REDIRECT_URI + "?" +"wechatId=" + userBascInfo.getOpenid());
-		button2.setSub_button(new Button[]{button21,button22});
+    HttpClient httpClient = HttpClientBuilder.create().build();
+    HttpPost httpPost = new HttpPost(url);
 
-		ClickButton button31 = new ClickButton();
-		button31.setType("scancode_push");
-		button31.setName("SCAN");
-		button31.setKey("Button31");
+    JSONObject jsonObject = null;
 
-		ClickButton button32 = new ClickButton();
-		button32.setType("location_select");
-		button32.setName("LOCATED");
-		button32.setKey("Button32");
+    try {
+      httpPost.setEntity(new StringEntity(outStr, "UTF-8"));
+      HttpResponse httpResponse = httpClient.execute(httpPost);
+      String result = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
+      jsonObject = JSONObject.fromObject(result);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return jsonObject;
+  }
 
-		Button button3 = new Button();
-		button3.setName("ACTION");
-		button3.setSub_button(new Button[] { button31, button32 });
+  /**
+   * get access_token
+   * 
+   * @return
+   * @throws ClientProtocolException
+   * @throws IOException
+   */
+  public static AccessToken getAccessToken() throws ClientProtocolException,
+      IOException {
 
-		menu.setButton(new Button[] { button1, button2, button3 });
+    AccessToken token = new AccessToken();
+    String url = ACCESS_TOKEN_URL.replace("APPID", APPID).replace("APPSECRET",
+        APPSECRET);
 
-		return menu;
-	}
+    JSONObject jsonObject = doGetStr(url);
+    if (jsonObject != null) {
+      token.setAccess_token(jsonObject.getString("access_token"));
+      token.setExpires_in(jsonObject.getInt("expires_in"));
+    }
+    return token;
+  }
 
-	/**
-	 * create menu
-	 * 
-	 * @param token
-	 * @param menu
-	 * @return
-	 * @throws ParseException
-	 * @throws IOException
-	 */
-	public static int createMenu(String token, String menu)
-			throws ParseException, IOException {
-		int result = 0;
-		String url = CREATE_MENU_URL.replace("ACCESS_TOKEN", token);
-		JSONObject jsonObject = doPostStr(url, menu);
-		if (jsonObject != null) {
-			result = jsonObject.getInt("errcode");
-		}
-		return result;
-	}
-	
-	
-	/*
-	public static String authorizedUserInfo() throws ClientProtocolException, IOException{
-		
-		String getCode_url = GET_CODE_URL.replace("APPID", APPID).replace("REDIRECT_URI", urlEnodeUTF8(REDIRECT_URI)).replace("SCOPE", SCOPE);
-		String code = null;
-		
-		HttpClient httpClient = HttpClientBuilder.create().build();
-		HttpGet httpGet = new HttpGet(getCode_url);
-		HttpResponse httpResponse = httpClient.execute(httpGet);
-	
-		httpGet.getURI().toURL();
-					
-		return getCode_url;
-		
-	}
-	*/
-	
-	/**
-	 * url encode
-	 * @param str
-	 * @return
-	 */
-	 public static String urlEnodeUTF8(String str){
-	        String result = str;
-	        try {
-	            result = URLEncoder.encode(str,"UTF-8");
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	        return result;
-	    }
+  /**
+   * get userinfo
+   * 
+   * @param fromUserName
+   * @return
+   */
+  public static UserBascInfo getUserBascInfo(String fromUserName) {
+    UserBascInfo userBascInfo = new UserBascInfo();
+    try {
+      String userInfo_url = USERINFO_URL.replace("ACCESS_TOKEN",
+          getAccessToken().getAccess_token()).replace("OPENID", fromUserName);
+      JSONObject jsonObject = doGetStr(userInfo_url);
+      if (jsonObject != null) {
+        userBascInfo.setOpenid(jsonObject.getString("openid"));
+        userBascInfo.setSubscribe(jsonObject.getString("subscribe"));
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return userBascInfo;
+  }
+
+  /**
+   * init the menu
+   * 
+   * @return
+   */
+  public static Menu initMenu(String touser) {
+    Menu menu = new Menu();
+
+    ClickButton button1 = new ClickButton();
+    button1.setType("click");
+    button1.setName("Resume");
+    button1.setKey("Button1");
+
+    ViewButton button2 = new ViewButton();
+    button2.setType("view");
+    button2.setName("Interview");
+    // button21.setKey("Button21");
+    button2.setUrl("http://wx.sh-ruida.com/rcs/wechat/sap" + "?" + "wechatId="
+        + touser + "#/interviewInfo?interviewId=1");
+
+    ClickButton button31 = new ClickButton();
+    button31.setType("scancode_push");
+    button31.setName("Scan");
+    button31.setKey("Button31");
+
+    ClickButton button32 = new ClickButton();
+    button32.setType("location_select");
+    button32.setName("Located");
+    button32.setKey("Button32");
+
+    Button button3 = new Button();
+    button3.setName("Action");
+    button3.setSub_button(new Button[] { button31, button32 });
+
+    menu.setButton(new Button[] { button1, button2, button3 });
+
+    return menu;
+  }
+
+  /**
+   * create menu
+   * 
+   * @param token
+   * @param menu
+   * @return
+   * @throws ParseException
+   * @throws IOException
+   */
+  public static int createMenu(String token, String menu)
+      throws ParseException, IOException {
+    int result = 0;
+    String url = CREATE_MENU_URL.replace("ACCESS_TOKEN", token);
+    JSONObject jsonObject = doPostStr(url, menu);
+    if (jsonObject != null) {
+      result = jsonObject.getInt("errcode");
+    }
+    return result;
+  }
+
+  /*
+   * public static String authorizedUserInfo() throws ClientProtocolException, IOException{ String getCode_url =
+   * GET_CODE_URL.replace("APPID", APPID).replace("REDIRECT_URI", urlEnodeUTF8(REDIRECT_URI)).replace("SCOPE", SCOPE);
+   * String code = null; HttpClient httpClient = HttpClientBuilder.create().build(); HttpGet httpGet = new
+   * HttpGet(getCode_url); HttpResponse httpResponse = httpClient.execute(httpGet); httpGet.getURI().toURL(); return
+   * getCode_url; }
+   */
+
+  /**
+   * url encode
+   * 
+   * @param str
+   * @return
+   */
+  public static String urlEnodeUTF8(String str) {
+    String result = str;
+    try {
+      result = URLEncoder.encode(str, "UTF-8");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return result;
+  }
 }
