@@ -75,6 +75,8 @@
 					<url>http://localhost:8080/manager/text</url>
 					<server>tomcat7</server>
 					<path>/sapwechat</path>
+					<username>admin</username>
+					<password>password</password>
 				</configuration>
 			</plugin>
 			<plugin>

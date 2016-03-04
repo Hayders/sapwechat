@@ -12,7 +12,7 @@ public class ModelMessage {
 
   private String jobTitle;
 
-  private String checkindate;
+  private String onboardDate;
 
   public String getInterviewDate() {
     return interviewDate;
@@ -30,12 +30,12 @@ public class ModelMessage {
     this.jobTitle = jobTitle;
   }
 
-  public String getCheckindate() {
-    return checkindate;
+  public String getOnboardDate() {
+    return onboardDate;
   }
 
-  public void setCheckindate(String checkindate) {
-    this.checkindate = checkindate;
+  public void setOnboardDate(String onboardDate) {
+    this.onboardDate = onboardDate;
   }
 
   private ModelData data;

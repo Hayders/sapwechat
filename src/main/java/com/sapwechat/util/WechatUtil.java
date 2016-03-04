@@ -157,35 +157,98 @@ public class WechatUtil {
    * 
    * @return
    */
-  public static Menu initMenu(String touser) {
+  public static Menu initMenu() {
     Menu menu = new Menu();
 
-    ClickButton button1 = new ClickButton();
-    button1.setType("click");
-    button1.setName("Resume");
-    button1.setKey("Button1");
+    
+    ClickButton button11 = new ClickButton();
+    button11.setType("click");
+    button11.setName("社会招聘");
+//    button11.setName("Professional");
+    button11.setKey("Button11");
+    
+    ClickButton button12 = new ClickButton();
+    button12.setType("click");
+    button12.setName("校园招聘");
+//    button12.setName("Graduate");
+    button12.setKey("Button12");
+    
+    ClickButton button13 = new ClickButton();
+    button13.setType("click");
+    button13.setName("实习生招聘");
+//    button13.setName("Internship");
+    button13.setKey("Button13");
+    
+    Button button1 = new Button();
+    button1.setName("SAP职路");
+//    button1.setName("Jobs");
+    button1.setSub_button(new Button[] { button11, button12,button13 });
+    
+    /*
+    ViewButton button11 = new ViewButton();
+    button11.setType("view");
+    button11.setName("社会招聘");
+    button11.setUrl("http://wx.sh-ruida.com/rcs/wechat/index/sap" + "?" + "wechatId="
+        + touser);
+    
+    ViewButton button12 = new ViewButton();
+    button12.setType("view");
+    button12.setName("校园招聘");
+    button12.setUrl("http://wx.sh-ruida.com/rcs/wechat/index/sap" + "?" + "wechatId="
+        + touser);
+    
+    ViewButton button13 = new ViewButton();
+    button13.setType("view");
+    button13.setName("实习生招聘");
+    button13.setUrl("http://wx.sh-ruida.com/rcs/wechat/index/sap" + "?" + "wechatId="
+        + touser);
+    
+    Button button1 = new Button();
+    button1.setName("SAP职路");
+    button1.setSub_button(new Button[] { button11, button12,button13 });
+    */
+  
+    
+    ClickButton button21 = new ClickButton();
+    button21.setType("click");
+//    button21.setName("About us");
+    button21.setName("关于我们");
+    button21.setKey("Button21");
+    
+    Button button2 = new Button();
+    button2.setType("click");
+    button2.setName("SAP中国");
+//    button2.setName("SAP");
+    button2.setSub_button(new Button[]{button21});
+    
+//    ViewButton button2 = new ViewButton();
+//    button2.setType("view");
+//    button2.setName("SAP中国");
+//    // button21.setKey("Button21");
+//    button2.setUrl("http://wx.sh-ruida.com/rcs/wechat/sap" + "?" + "wechatId="
+//        + touser + "#/interviewInfo?interviewId=1");
+    
+//    ClickButton button31 = new ClickButton();
+//    button31.setType("click");
+//    button31.setName("我的面试");
+//    button31.setKey("Button31");
+//
+//    ClickButton button32 = new ClickButton();
+//    button32.setType("click");
+//    button32.setName("我的简历");
+//    button32.setKey("Button32");
+//
+//    Button button3 = new Button();
+//    button3.setName("个人中心");
+//    button3.setSub_button(new Button[] { button31, button32 });
 
-    ViewButton button2 = new ViewButton();
-    button2.setType("view");
-    button2.setName("Interview");
-    // button21.setKey("Button21");
-    button2.setUrl("http://wx.sh-ruida.com/rcs/wechat/sap" + "?" + "wechatId="
-        + touser + "#/interviewInfo?interviewId=1");
-
-    ClickButton button31 = new ClickButton();
-    button31.setType("scancode_push");
-    button31.setName("Scan");
-    button31.setKey("Button31");
-
-    ClickButton button32 = new ClickButton();
-    button32.setType("location_select");
-    button32.setName("Located");
-    button32.setKey("Button32");
-
-    Button button3 = new Button();
-    button3.setName("Action");
-    button3.setSub_button(new Button[] { button31, button32 });
-
+    
+    ViewButton button3 = new ViewButton();
+    button3.setType("view");
+    button3.setName("个人中心");
+//    button3.setName("Me");
+    button3.setUrl("http://wx.sh-ruida.com/rcs/wechat/sap?wechatId=oX7wvwVu7bsmY2D4cfdA0WCwYFM0#/personalCenter");
+    
     menu.setButton(new Button[] { button1, button2, button3 });
 
     return menu;
@@ -211,13 +274,6 @@ public class WechatUtil {
     return result;
   }
 
-  /*
-   * public static String authorizedUserInfo() throws ClientProtocolException, IOException{ String getCode_url =
-   * GET_CODE_URL.replace("APPID", APPID).replace("REDIRECT_URI", urlEnodeUTF8(REDIRECT_URI)).replace("SCOPE", SCOPE);
-   * String code = null; HttpClient httpClient = HttpClientBuilder.create().build(); HttpGet httpGet = new
-   * HttpGet(getCode_url); HttpResponse httpResponse = httpClient.execute(httpGet); httpGet.getURI().toURL(); return
-   * getCode_url; }
-   */
 
   /**
    * url encode

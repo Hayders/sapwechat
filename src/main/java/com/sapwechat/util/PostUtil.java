@@ -1,39 +1,54 @@
 package com.sapwechat.util;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import net.sf.json.JSONObject;
+import net.sf.json.util.NewBeanInstanceStrategy;
 
 import org.apache.http.ParseException;
+
 import com.sapwechat.entity.modelmessage.ModelMessage;
 
 public class PostUtil {
 
-  public static String touser = "oX7wvwUYGxTRGOs1CJBItBcSf5tA"; //
+//    public static  String to_user = "oX7wvwUYGxTRGOs1CJBItBcSf5tA"; //Me
+    
+//    public static  String to_user = "oX7wvwVu7bsmY2D4cfdA0WCwYFM0"; //Cai
+  
+//    public static String to_user = "oX7wvwfQqKQ2M47G8m9qjyfBa-x8"; //Terry
 
-  // public static String touser = "oX7wvwfMBEbOzuBsMtFbnm4H4cWQ"; // lisa
+//    public static String to_user = "oX7wvwfMBEbOzuBsMtFbnm4H4cWQ"; // lisa
 
-  // public static String touser = "oX7wvwc-MWrfPJw66yBsu82d1Cl8"; //Fiona
-
+    public static String to_user = "oX7wvwc-MWrfPJw66yBsu82d1Cl8"; //Fiona
+   
+   //public static String to_user = "oX7wvwbMqeIJWDzZgTQK7EL3fhJo"; //wenchang
+   private static SimpleDateFormat dFormat = null;
 
   /**
    * interview Pre
+   * 
    * @param token
    * @throws ParseException
    * @throws IOException
    */
+   
+   
   public static void postPreModelMessage(String token) throws ParseException,
       IOException {
-
+    dFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     ModelMessage modelMessage = new ModelMessage();
-    modelMessage.setTemplate_id("C24U97tgWasBpclRdleHZILpKPGue5aH52QThLdKn8M");
-    modelMessage.setInterviewDate("2016-03-02 17:00");
-    modelMessage.setJobTitle("Software Developer");
+//    modelMessage.setTemplate_id("TQGgFCbx6OiTWRh_BhuZDAIHuK21UqcySc_56PALB2Y"); //English
+    modelMessage.setTemplate_id("dYpxQwaV7RT_D35H7WglVzCVo3dIUgmUpfj1CFJ-BHc"); //Chinese
+    modelMessage.setInterviewDate(dFormat.format(new Date()));
+//    modelMessage.setJobTitle("Programming Cheerleader");  
+    modelMessage.setJobTitle("销售总监");
 
     String modelMessage1 = JSONObject.fromObject(
-        MessageUtil.initPreModelMessage(touser, modelMessage.getTemplate_id(),
+        MessageUtil.initPreModelMessage(to_user, modelMessage.getTemplate_id(),
             modelMessage.getInterviewDate(), modelMessage.getJobTitle()))
-        .toString();
+        .toString(); 
     int result;
     try {
       result = MessageUtil.postModelMessage(token, modelMessage1);
@@ -48,6 +63,7 @@ public class PostUtil {
 
   /**
    * post message before few minutes
+   * 
    * @param token
    * @throws ParseException
    * @throws IOException
@@ -55,13 +71,16 @@ public class PostUtil {
   public static void postMidModelMessage(String token) throws ParseException,
       IOException {
 
+    dFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     ModelMessage modelMessage = new ModelMessage();
-    modelMessage.setTemplate_id("48iI_oHltaaw1dZHq0YfunjPcgVW5-k-DkSb6mz4E4A");
-    modelMessage.setInterviewDate("2016-03-02 17:00");
-    modelMessage.setJobTitle("Software Developer");
+//    modelMessage.setTemplate_id("EzpUe9uwC2wdTVWSkBVQaSghKsEcZXEc_bqYs2BGieo"); //English
+    modelMessage.setTemplate_id("Juz-zK1y6y0-SHLnw_MibecxJYueL8RQgiu78aiAG28");
+    modelMessage.setInterviewDate(dFormat.format(new Date()));
+//    modelMessage.setJobTitle("Programming Cheerleader");
+    modelMessage.setJobTitle("销售总监");
 
     String modelMessage1 = JSONObject.fromObject(
-        MessageUtil.initMidModelMessage(touser, modelMessage.getTemplate_id(),
+        MessageUtil.initMidModelMessage(to_user, modelMessage.getTemplate_id(),
             modelMessage.getInterviewDate(), modelMessage.getJobTitle()))
         .toString();
     int result;
@@ -78,6 +97,7 @@ public class PostUtil {
 
   /**
    * check in message
+   * 
    * @param token
    * @throws ParseException
    * @throws IOException
@@ -86,13 +106,15 @@ public class PostUtil {
       IOException {
 
     ModelMessage modelMessage = new ModelMessage();
-    modelMessage.setTemplate_id("HR7xot4ZiuyXTSm7cWMfDyruH-9ohdsEKGrnzALqzK8");
-    modelMessage.setCheckindate("2016-04-02 8:00");
-    modelMessage.setJobTitle("Software Developer");
-
+//    modelMessage.setTemplate_id("MYJLGe9ekwIMA_jKuu2OFF4exT6FAcdv_nSaujkDEes");//English
+    modelMessage.setTemplate_id("ley3Jf-XXus6jDDCiBWhgZotHTbBeNVoeuFCUYyQIFI");//Chinese
+    modelMessage.setOnboardDate("2016-04-02 10:00");
+//    modelMessage.setJobTitle("Programming Cheerleader");
+    modelMessage.setJobTitle("销售总监");
+    
     String modelMessage1 = JSONObject.fromObject(
-        MessageUtil.initLastModelMessage(touser, modelMessage.getTemplate_id(),
-            modelMessage.getCheckindate(), modelMessage.getJobTitle()))
+        MessageUtil.initLastModelMessage(to_user, modelMessage.getTemplate_id(),
+            modelMessage.getOnboardDate(), modelMessage.getJobTitle()))
         .toString();
     int result;
     try {
@@ -108,10 +130,11 @@ public class PostUtil {
 
   /**
    * create menu
+   * 
    * @param token
    */
   public static void createMenu(String token) {
-    String menuString = JSONObject.fromObject(WechatUtil.initMenu(touser))
+    String menuString = JSONObject.fromObject(WechatUtil.initMenu())
         .toString();
     int result;
     try {

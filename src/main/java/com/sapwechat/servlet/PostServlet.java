@@ -11,30 +11,27 @@ import com.sapwechat.entity.util.AccessToken;
 import com.sapwechat.util.PostUtil;
 import com.sapwechat.util.WechatUtil;
 
-
-
 public class PostServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    
+
     AccessToken accessToken = WechatUtil.getAccessToken();
     String sssString1 = req.getParameter("1");
     String sssString2 = req.getParameter("2");
     String sssString3 = req.getParameter("3");
-    if (sssString1!=null && req.getParameter("1").equals("Pre")) {
+    if (sssString1 != null && req.getParameter("1").equals("Congrats")) {
       PostUtil.postPreModelMessage(accessToken.getAccess_token());
-      
-    } else if (sssString2!=null && req.getParameter("2").equals("Mid")){
+
+    } else if (sssString2 != null && req.getParameter("2").equals("Remind")) {
       PostUtil.postMidModelMessage(accessToken.getAccess_token());
-      
-    } else if (sssString3!=null && req.getParameter("3").equals("Last")){
+
+    } else if (sssString3 != null && req.getParameter("3").equals("Welcome")) {
       PostUtil.postLastModelMessage(accessToken.getAccess_token());
+
     }
 
   }
-
-  
 
 }

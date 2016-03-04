@@ -5,10 +5,12 @@ public class ModelData {
   private DataDes first;
 
   private DataDes InterviewDate;
-  
-  private DataDes checkindate;
+
+  private DataDes onboardDate;
 
   private DataDes jobTitle;
+
+  private DataDes remark;
 
   public DataDes getJobTitle() {
     return jobTitle;
@@ -18,8 +20,6 @@ public class ModelData {
     this.jobTitle = jobTitle;
   }
 
-  private DataDes remark;
-
   public DataDes getFirst() {
     return first;
   }
@@ -28,12 +28,12 @@ public class ModelData {
     this.first = first;
   }
 
-  public DataDes getCheckindate() {
-    return checkindate;
+  public DataDes getOnboardDate() {
+    return onboardDate;
   }
 
-  public void setCheckindate(DataDes checkindate) {
-    this.checkindate = checkindate;
+  public void setOnboardDate(DataDes onboardDate) {
+    this.onboardDate = onboardDate;
   }
 
   public DataDes getInterviewDate() {

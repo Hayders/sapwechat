@@ -63,7 +63,16 @@ public class WechatServlet extends HttpServlet {
         String eventType = map.get("Event");
         if (MessageUtil.MESSAGE_CLICK.equals(eventType)) {
           String eventKey = map.get("EventKey");
-          if (("Button1").equals(eventKey)) {
+          if (("Button11").equals(eventKey)) {
+            message = MessageUtil.initRecruitNewsMessage(toUserName, fromUserName,
+                userBascInfo);
+          }else if (("Button12").equals(eventKey)) {
+            message = MessageUtil.initRecruitNewsMessage(toUserName, fromUserName,
+                userBascInfo);
+          }else if (("Button13").equals(eventKey)) {
+            message = MessageUtil.initRecruitNewsMessage(toUserName, fromUserName,
+                userBascInfo);
+          }else if (("Button21").equals(eventKey)) {
             message = MessageUtil.initNewsMessage(toUserName, fromUserName,
                 userBascInfo);
           }

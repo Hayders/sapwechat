@@ -32,5 +32,4 @@
 		<url-pattern>/servlet/PostServlet</url-pattern>
 	</servlet-mapping>
 
-
 </web-app>
