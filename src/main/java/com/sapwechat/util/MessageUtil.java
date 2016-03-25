@@ -134,26 +134,26 @@ public class MessageUtil {
     NewsMessage newsMessage = new NewsMessage();
 
     // 中文版
-     News news1 = new News();
-     news1.setTitle("【SAP热招】寻找机会的你看过来");
-     news1.setDescription("如果您具备计算机或者其他理工科背景，具任何中间件技术或基础网络通信的经验或兴趣，具快速学习、分析解决问题能力，良好的英语，请与我们联系。");
-     news1.setPicUrl("http://wx.sh-ruida.com/"
-     + "sapwechat/static/img/saprecruitment.jpg");
-     news1.setUrl(WechatUtil.REDIRECT_URI + "?" + "wechatId="
-     + userBascInfo.getOpenid());
+//     News news1 = new News();
+//     news1.setTitle("【SAP热招】寻找机会的你看过来");
+//     news1.setDescription("如果您具备计算机或者其他理工科背景，具任何中间件技术或基础网络通信的经验或兴趣，具快速学习、分析解决问题能力，良好的英语，请与我们联系。");
+//     news1.setPicUrl("http://wx.sh-ruida.com/"
+//     + "sapwechat/static/img/saprecruitment.jpg");
+//     news1.setUrl(WechatUtil.REDIRECT_URI + "?" + "wechatId="
+//     + userBascInfo.getOpenid());
 
     // 英文版
-//    News news1 = new News();
-//    news1.setTitle("【Hot Jobs】New opening for this week!");
-//    news1
-//        .setDescription("It’s time you realize your full potential and "
-//            + "explore all that SAP has to offer you. Below are various opportunities "
-//            + "to grow your career at SAP. If you have friends/contacts in your network "
-//            + "with suitable skills for the positions below, please refer them to us.");
-//    news1.setPicUrl("http://wx.sh-ruida.com/"
-//        + "sapwechat/static/img/saprecruitment.jpg");
-//    news1.setUrl(WechatUtil.REDIRECT_URI + "?" + "wechatId="
-//        + userBascInfo.getOpenid());
+    News news1 = new News();
+    news1.setTitle("【Hot Jobs】New opening for this week!");
+    news1
+        .setDescription("It’s time you realize your full potential and "
+            + "explore all that SAP has to offer you. Below are various opportunities "
+            + "to grow your career at SAP. If you have friends/contacts in your network "
+            + "with suitable skills for the positions below, please refer them to us.");
+    news1.setPicUrl("http://wx.sh-ruida.com/"
+        + "sapwechat/static/img/saprecruitment.jpg");
+    news1.setUrl(WechatUtil.REDIRECT_URI + "?" + "wechatId="
+        + userBascInfo.getOpenid());
 
     /*
      * News news1 = new News(); news1.setTitle("SAP Wechat Recruitment");
@@ -190,24 +190,29 @@ public class MessageUtil {
     NewsMessage newsMessage = new NewsMessage();
 
     //中文版
-    News news1 = new News();
-    news1.setTitle("与SAP全球CEO孟鼎铭一起开启你的逐梦之旅!");
-    news1
-        .setDescription("14日，SAP全球CEO孟鼎铭(Bill McDermott)做客清华大学经济管理学院企业家讲堂，面向数百位青年学子，以”逐梦之旅“(Winners Dream)为题发表了精彩演讲。");
-    news1.setPicUrl("http://wx.sh-ruida.com/sapwechat/static/img/Bill.jpg");
-    news1.setUrl(WechatUtil.REDIRECT_URI + "?" + "wechatId="
-        + userBascInfo.getOpenid());
+//    News news1 = new News();
+//    news1.setTitle("与SAP全球CEO孟鼎铭一起开启你的逐梦之旅!");
+//    news1
+//        .setDescription("14日，SAP全球CEO孟鼎铭(Bill McDermott)做客清华大学经济管理学院企业家讲堂，面向数百位青年学子，以”逐梦之旅“(Winners Dream)为题发表了精彩演讲。");
+//    news1.setPicUrl("http://wx.sh-ruida.com/sapwechat/static/img/Bill.jpg");
+//    news1.setUrl(WechatUtil.REDIRECT_URI + "?" + "wechatId="
+//        + userBascInfo.getOpenid());
     
     //英文版
-//    News news1 = new News();
-//    news1.setTitle("Winning the Next Generation for SAP");
-//    news1
-//        .setDescription("Bill McDermott seized the opportunity of the FKOM"
-//            + " week in Singapore and China to share his life story with young people,"
-//            + " and encouraged them to dream and to stay true to their values.");
-//    news1.setPicUrl("http://wx.sh-ruida.com/sapwechat/static/img/Bill.jpg");
-//    news1.setUrl("https://blogs.wdf.sap.corp/sapnews_en/2016/01/winning-the-next-generation-for-sap/");
-
+    News news1 = new News();
+    news1.setTitle("Winning the Next Generation for SAP");
+    news1
+        .setDescription("Bill McDermott seized the opportunity of the FKOM"
+            + " week in Singapore and China to share his life story with young people,"
+            + " and encouraged them to dream and to stay true to their values.");
+    news1.setPicUrl("http://wx.sh-ruida.com/sapwechat/static/img/Bill.jpg");
+    
+//    news1.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxde611500e7346f8d"
+//        + "&redirect_uri=http%3a%2f%2fp530.coil.sap.com%3a50000%2frcs%2f&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect");
+    
+    news1.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxde611500e7346f8d"
+        + "&redirect_uri=http%3A%2F%2Fwx.sh-ruida.com%2Frcs%2Fwechat%2Fcallback%2Fsap&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect");
+    
     newsList.add(news1);
 
     newsMessage.setFromUserName(toUserName);
@@ -240,9 +245,9 @@ public class MessageUtil {
     ModelData modelData = new ModelData();
 
     DataDes firstDataDes = new DataDes();
-//    firstDataDes.setValue("Your resume has passed the screening process, "
-//        + "and now you are invited to our interview!");
-    firstDataDes.setValue("你的简历已通过筛选流程，具体面试情况安排如下：");
+    firstDataDes.setValue("Your resume has passed the screening process, "
+        + "and now you are invited to our interview!");
+//    firstDataDes.setValue("你的简历已通过筛选流程，具体面试情况安排如下：");
     
     firstDataDes.setColor(color);
 
@@ -255,8 +260,8 @@ public class MessageUtil {
     jobTitleValueDataDes.setColor(color);
 
     DataDes remarkDataDes = new DataDes();
-//    remarkDataDes.setValue("Please be punctual for the  interview! ");
-    remarkDataDes.setValue("请准时参加面试，如有疑问，请及时联系HR同事。");
+    remarkDataDes.setValue("Please be punctual for the  interview! ");
+//    remarkDataDes.setValue("请准时参加面试，如有疑问，请及时联系HR同事。");
     remarkDataDes.setColor(color);
 
     modelData.setFirst(firstDataDes);
@@ -292,8 +297,8 @@ public class MessageUtil {
     ModelData modelData = new ModelData();
 
     DataDes firstDataDes = new DataDes();
-//    firstDataDes.setValue("Your interview is coming in a minutes!");
-    firstDataDes.setValue("您的面试马上开始啦！");
+    firstDataDes.setValue("Your interview is coming in a minutes!");
+//    firstDataDes.setValue("您的面试马上开始啦！");
     firstDataDes.setColor(color);
 
     DataDes interviewDateDataDes = new DataDes();
@@ -305,8 +310,8 @@ public class MessageUtil {
     jobTitleValueDataDes.setColor(color);
 
     DataDes remarkDataDes = new DataDes();
-//    remarkDataDes.setValue("Please tip me to attend the interview");
-    remarkDataDes.setValue("请点击这里参加面试！");
+    remarkDataDes.setValue("Please tip me to attend the interview");
+//    remarkDataDes.setValue("请点击这里参加面试！");
     remarkDataDes.setColor(color);
 
     modelData.setFirst(firstDataDes);
@@ -335,8 +340,8 @@ public class MessageUtil {
     ModelData modelData = new ModelData();
 
     DataDes firstDataDes = new DataDes();
-//    firstDataDes.setValue("Congratulations! You have passed the interview");
-    firstDataDes.setValue("祝贺你，你已通过面试，具体入职安排如下：");
+    firstDataDes.setValue("Congratulations! You have passed the interview");
+//    firstDataDes.setValue("祝贺你，你已通过面试，具体入职安排如下：");
     firstDataDes.setColor(color);
 
     DataDes onboarddateDataDes = new DataDes();
@@ -348,8 +353,8 @@ public class MessageUtil {
     jobTitleValueDataDes.setColor(color);
 
     DataDes remarkDataDes = new DataDes();
-//    remarkDataDes.setValue("We look forward to your join in SAP!");
-    remarkDataDes.setValue("我们期待你的加入！");
+    remarkDataDes.setValue("We look forward to your join in SAP!");
+//    remarkDataDes.setValue("我们期待你的加入！");
     remarkDataDes.setColor(color);
 
     modelData.setFirst(firstDataDes);

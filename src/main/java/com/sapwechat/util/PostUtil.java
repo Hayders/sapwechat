@@ -13,15 +13,15 @@ import com.sapwechat.entity.modelmessage.ModelMessage;
 
 public class PostUtil {
 
-//    public static  String to_user = "oX7wvwUYGxTRGOs1CJBItBcSf5tA"; //Me
+    public static  String to_user = "oX7wvwUYGxTRGOs1CJBItBcSf5tA"; //Xueshi
     
-//    public static  String to_user = "oX7wvwVu7bsmY2D4cfdA0WCwYFM0"; //Cai
+//    public static  String to_user = "oX7wvwVu7bsmY2D4cfdA0WCwYFM0"; //Rechard
   
 //    public static String to_user = "oX7wvwfQqKQ2M47G8m9qjyfBa-x8"; //Terry
 
 //    public static String to_user = "oX7wvwfMBEbOzuBsMtFbnm4H4cWQ"; // lisa
 
-    public static String to_user = "oX7wvwc-MWrfPJw66yBsu82d1Cl8"; //Fiona
+//    public static String to_user = "oX7wvwc-MWrfPJw66yBsu82d1Cl8"; //Fiona
    
    //public static String to_user = "oX7wvwbMqeIJWDzZgTQK7EL3fhJo"; //wenchang
    private static SimpleDateFormat dFormat = null;
@@ -39,11 +39,11 @@ public class PostUtil {
       IOException {
     dFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     ModelMessage modelMessage = new ModelMessage();
-//    modelMessage.setTemplate_id("TQGgFCbx6OiTWRh_BhuZDAIHuK21UqcySc_56PALB2Y"); //English
-    modelMessage.setTemplate_id("dYpxQwaV7RT_D35H7WglVzCVo3dIUgmUpfj1CFJ-BHc"); //Chinese
+    modelMessage.setTemplate_id("TQGgFCbx6OiTWRh_BhuZDAIHuK21UqcySc_56PALB2Y"); //English
+//    modelMessage.setTemplate_id("dYpxQwaV7RT_D35H7WglVzCVo3dIUgmUpfj1CFJ-BHc"); //Chinese
     modelMessage.setInterviewDate(dFormat.format(new Date()));
-//    modelMessage.setJobTitle("Programming Cheerleader");  
-    modelMessage.setJobTitle("销售总监");
+    modelMessage.setJobTitle("Senior Service Sales");  
+//    modelMessage.setJobTitle("销售总监");
 
     String modelMessage1 = JSONObject.fromObject(
         MessageUtil.initPreModelMessage(to_user, modelMessage.getTemplate_id(),
@@ -73,11 +73,11 @@ public class PostUtil {
 
     dFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     ModelMessage modelMessage = new ModelMessage();
-//    modelMessage.setTemplate_id("EzpUe9uwC2wdTVWSkBVQaSghKsEcZXEc_bqYs2BGieo"); //English
-    modelMessage.setTemplate_id("Juz-zK1y6y0-SHLnw_MibecxJYueL8RQgiu78aiAG28");
+    modelMessage.setTemplate_id("EzpUe9uwC2wdTVWSkBVQaSghKsEcZXEc_bqYs2BGieo"); //English
+//    modelMessage.setTemplate_id("Juz-zK1y6y0-SHLnw_MibecxJYueL8RQgiu78aiAG28");
     modelMessage.setInterviewDate(dFormat.format(new Date()));
-//    modelMessage.setJobTitle("Programming Cheerleader");
-    modelMessage.setJobTitle("销售总监");
+    modelMessage.setJobTitle("Senior Service Sales");
+//    modelMessage.setJobTitle("销售总监");
 
     String modelMessage1 = JSONObject.fromObject(
         MessageUtil.initMidModelMessage(to_user, modelMessage.getTemplate_id(),
@@ -106,11 +106,11 @@ public class PostUtil {
       IOException {
 
     ModelMessage modelMessage = new ModelMessage();
-//    modelMessage.setTemplate_id("MYJLGe9ekwIMA_jKuu2OFF4exT6FAcdv_nSaujkDEes");//English
-    modelMessage.setTemplate_id("ley3Jf-XXus6jDDCiBWhgZotHTbBeNVoeuFCUYyQIFI");//Chinese
+    modelMessage.setTemplate_id("MYJLGe9ekwIMA_jKuu2OFF4exT6FAcdv_nSaujkDEes");//English
+//    modelMessage.setTemplate_id("ley3Jf-XXus6jDDCiBWhgZotHTbBeNVoeuFCUYyQIFI");//Chinese
     modelMessage.setOnboardDate("2016-04-02 10:00");
-//    modelMessage.setJobTitle("Programming Cheerleader");
-    modelMessage.setJobTitle("销售总监");
+    modelMessage.setJobTitle("Senior Service Sales");
+//    modelMessage.setJobTitle("销售总监");
     
     String modelMessage1 = JSONObject.fromObject(
         MessageUtil.initLastModelMessage(to_user, modelMessage.getTemplate_id(),

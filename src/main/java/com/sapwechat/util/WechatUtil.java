@@ -163,25 +163,25 @@ public class WechatUtil {
     
     ClickButton button11 = new ClickButton();
     button11.setType("click");
-    button11.setName("社会招聘");
-//    button11.setName("Professional");
+//    button11.setName("社会招聘");
+    button11.setName("Professional");
     button11.setKey("Button11");
     
     ClickButton button12 = new ClickButton();
     button12.setType("click");
-    button12.setName("校园招聘");
-//    button12.setName("Graduate");
+//    button12.setName("校园招聘");
+    button12.setName("Graduate");
     button12.setKey("Button12");
     
     ClickButton button13 = new ClickButton();
     button13.setType("click");
-    button13.setName("实习生招聘");
-//    button13.setName("Internship");
+//    button13.setName("实习生招聘");
+    button13.setName("Internship");
     button13.setKey("Button13");
     
     Button button1 = new Button();
-    button1.setName("SAP职路");
-//    button1.setName("Jobs");
+//    button1.setName("SAP职路");
+    button1.setName("Jobs");
     button1.setSub_button(new Button[] { button11, button12,button13 });
     
     /*
@@ -211,14 +211,14 @@ public class WechatUtil {
     
     ClickButton button21 = new ClickButton();
     button21.setType("click");
-//    button21.setName("About us");
-    button21.setName("关于我们");
+    button21.setName("About us");
+//    button21.setName("关于我们");
     button21.setKey("Button21");
     
     Button button2 = new Button();
     button2.setType("click");
-    button2.setName("SAP中国");
-//    button2.setName("SAP");
+//    button2.setName("SAP中国");
+    button2.setName("SAP");
     button2.setSub_button(new Button[]{button21});
     
 //    ViewButton button2 = new ViewButton();
@@ -245,8 +245,8 @@ public class WechatUtil {
     
     ViewButton button3 = new ViewButton();
     button3.setType("view");
-    button3.setName("个人中心");
-//    button3.setName("Me");
+//    button3.setName("个人中心");
+    button3.setName("Me");
     button3.setUrl("http://wx.sh-ruida.com/rcs/wechat/sap?wechatId=oX7wvwVu7bsmY2D4cfdA0WCwYFM0#/personalCenter");
     
     menu.setButton(new Button[] { button1, button2, button3 });
